@@ -1,6 +1,7 @@
 CFLAGS = -Wall -Werror -Wextra
 NAME_BONUS = checker
 NAME = push_swap
+FOLDER = objects
 
 SOURCE = adaptive.c \
 asign_stack.c \
@@ -40,14 +41,16 @@ utils.c
 OBJ = $(SOURCE:.c=.o)
 OBJ_BONUS = $(BONUS_SOURCE:.c=.o)
 
-all: $(NAME) clean
+all: $(NAME) move
 
-bonus: $(NAME_BONUS) clean
+bonus: $(NAME_BONUS) move
 
 lib:
-	@make -C libft all clean
-	@mv "libft/libft.a" .
-	@echo "\033[0;32m ✓ Movida la libft precopilada\n\033[0m"
+	@if [ ! -d "libft.a" ] ; then \
+		make -C libft all clean; \
+		mv "libft/libft.a" .; \
+		echo "\033[0;32m ✓ Movida la libft precopilada\n\033[0m"; \
+	fi
 
 $(NAME): $(OBJ) lib
 	@cc $(CFLAGS) $(OBJ) libft.a -o $(NAME)
@@ -61,12 +64,21 @@ $(NAME_BONUS): $(OBJ_BONUS) lib
 	@cc -c $(CFLAGS) $< -o $@
 
 clean:
-	@rm -rf $(OBJ) $(OBJ_BONUS)
+	@rm -rf $(FOLDER)
 	@echo "\033[0;31m ✗ Eliminar los .o del push_swap y el checker\n\033[0m"
 
 fclean: clean
-	@rm -f $(NAME) $(NAME_BONUS)
-	@echo "\033[0;31m ✗ Eliminar el copilado del push_swap y el checker\n\033[0m"
+	@rm -f $(NAME) $(NAME_BONUS) libft.a
+	@echo "\033[0;31m ✗ Eliminar el copilado del push_swap, el checker y la libft.a\n\033[0m"
 
 re: fclean all
 
+move:
+	@if [ ! -d "$(FOLDER)" ]; then \
+		mkdir $(FOLDER); \
+		echo "\033[0;32m ✓ Carpeta para .o creada\n\033[0m"; \
+	fi
+	@mv *.o $(FOLDER)/
+	@echo "\033[0;33m ⚠ objetos .o alojados en la carpeta objects\n\033[0m"
+
+.PHONY: bonus re fclean all clean lib move
