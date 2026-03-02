@@ -25,8 +25,8 @@ parser.c \
 parse_int.c \
 asign_stack.c \
 ft_flags_utils.c \
-gnl/get_next_line.c \
-gnl/get_next_line_utils.c \
+get_next_line.c \
+get_next_line_utils.c \
 movements_bonus.c \
 strverif.c \
 basic_mov.c \

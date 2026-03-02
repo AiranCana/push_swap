@@ -6,7 +6,7 @@
 /*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 10:26:44 by acanadil          #+#    #+#             */
-/*   Updated: 2026/02/27 15:31:06 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/02 10:24:12 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	letercorrect(char **arg, t_list **stacka)
 		aux++;
 	num = ft_substr(*arg, 0, aux - *arg);
 	i = ft_atoi_long(num);
-	if (i > 2147483647 && -2147483648 > i)
+	if (i > 2147483647 || -2147483648 > i)
 		return (freesear(stacka, 1));
 	number = ft_lstnew((int) i);
 	if (foun_number(stacka, number))

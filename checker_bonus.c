@@ -6,12 +6,12 @@
 /*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 15:15:22 by acanadil          #+#    #+#             */
-/*   Updated: 2026/02/28 12:55:35 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/02 10:27:20 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "gnl/get_next_line.h"
+#include "get_next_line.h"
 
 static void	print_sol(t_stack *stack, t_flags *flags)
 {

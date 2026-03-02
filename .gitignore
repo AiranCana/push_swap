@@ -2,3 +2,6 @@
 *.out
 hola.c
 checker_linux
+checker
+*/*.o
+*.o
