@@ -5,3 +5,5 @@ checker_linux
 checker
 */*.o
 *.o
+push_swap
+bench.txt

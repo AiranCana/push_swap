@@ -6,7 +6,7 @@
 /*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 09:59:52 by acanadil          #+#    #+#             */
-/*   Updated: 2026/03/02 11:39:21 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/02 13:29:46 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,10 @@ t_list	*parser_int(char **arg, t_flags *flags)
 
 	size = num_number(arg, flags);
 	if (size == 0)
+	{
+		ft_flaclear(&flags);
 		return (NULL);
+	}
 	numbers = NULL;
 	save_numbers(arg, flags, &numbers);
 	return (numbers);

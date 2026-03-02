@@ -3,13 +3,11 @@ NAME_BONUS = checker
 NAME = push_swap
 FOLDER = objects
 
-SOURCE = adaptive.c \
-asign_stack.c \
+SOURCE = asign_stack.c \
 basic_mov.c \
 basic_mov_2stacks.c \
 basic_rYrr.c \
 basic_sYp.c \
-complex.c \
 disorder.c \
 ft_atoi_long.c \
 ft_flags_utils.c \
@@ -20,7 +18,10 @@ parse_int.c \
 simple.c \
 strverif.c \
 utils.c \
-print_set.c
+print_set.c \
+utils_sort.c 
+# complex.c \
+adaptiv.c 
 
 BONUS_SOURCE = checker_bonus.c \
 parser.c \
@@ -54,17 +55,18 @@ lib:
 	fi
 
 $(NAME): $(OBJ) lib
-	@cc $(CFLAGS) $(OBJ) libft.a -o $(NAME)
+	@cc $(CFLAGS) $(OBJ) libft.a -g -o $(NAME)
 	@echo "\033[0;32m ✓ Copilado el push_swap\n\033[0m"
 
 $(NAME_BONUS): $(OBJ_BONUS) lib
-	@cc $(CFLAGS) $(OBJ_BONUS) libft.a -o $(NAME_BONUS)
+	@cc $(CFLAGS) $(OBJ_BONUS) libft.a  -g -o $(NAME_BONUS)
 	@echo "\033[0;32m ✓ Copilado el checker\n\033[0m"
 
 %.o: %.c
 	@cc -c $(CFLAGS) $< -o $@
 
 clean:
+	@rm -rf $(OBJ) $(OBJ_BONUS)
 	@rm -rf $(FOLDER)
 	@echo "\033[0;31m ✗ Eliminar los .o del push_swap y el checker\n\033[0m"
 
