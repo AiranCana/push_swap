@@ -6,7 +6,7 @@
 /*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 15:15:22 by acanadil          #+#    #+#             */
-/*   Updated: 2026/03/02 11:59:16 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/02 16:05:38 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	main(int argv, char **args)
 	while (s)
 	{
 		makemove(&stack, s);
+		free(s);
 		s = get_next_line(0);
 	}
 	print_sol(stack, flags);
