@@ -6,7 +6,7 @@
 /*   By: raqroca- <raqroca-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 10:41:14 by raqroca-          #+#    #+#             */
-/*   Updated: 2026/03/02 11:29:08 by raqroca-         ###   ########.fr       */
+/*   Updated: 2026/03/03 11:03:01 by raqroca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,9 @@ void	simple(t_stack **stack)
 		tiny_sort(stack);
 		return ;
 	}
-	while (ft_lstsize((*stack)->stacka) > 3 && !is_sorted((*stack)->stacka))
+	while (ft_lstsize((*stack)->stacka) > 3)
 		push_min_to_b(stack);
-	if (!is_sorted((*stack)->stacka))
-		tiny_sort(stack);
+	tiny_sort(stack);
 	while ((*stack)->stackb != NULL)
 		pa(stack);
 }

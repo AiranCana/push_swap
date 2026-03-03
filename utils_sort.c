@@ -6,7 +6,7 @@
 /*   By: raqroca- <raqroca-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 11:02:07 by raqroca-          #+#    #+#             */
-/*   Updated: 2026/03/02 17:02:55 by raqroca-         ###   ########.fr       */
+/*   Updated: 2026/03/03 11:46:30 by raqroca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	tiny_sort(t_stack **stack)
 {
 	int	size;
 
-	size = ft_lstsize((*stack)->stacka);
-	if (size == 1 || is_sorted((*stack)->stacka))
+	if (!(*stack)->stacka || is_sorted((*stack)->stacka))
 		return ;
+	size = ft_lstsize((*stack)->stacka);
 	if (size == 2)
 	{
 		if ((*stack)->stacka->num > (*stack)->stacka->next->num)
@@ -88,4 +88,35 @@ void	assign_pos(t_list *stacka)
 		current->pos = count;
 		current = current->next;
 	}
+}
+
+int	get_pos_index(t_list *stack, int pos_look)
+{
+	int	i;
+
+	i = 0;
+	while (stack)
+	{
+		if (stack->pos == pos_look)
+			return (i);
+		i++;
+		stack = stack->next;
+	}
+	return (-1);
+}
+
+int	get_max_index(t_list *stack)
+{
+	int	max_p;
+
+	if (!stack)
+		return (0);
+	max_p = stack->pos;
+	while (stack)
+	{
+		if (stack->pos > max_p)
+			max_p = stack->pos;
+		stack = stack->next;
+	}
+	return (max_p);
 }
