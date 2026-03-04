@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raqroca- <raqroca-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 12:17:52 by raqroca-          #+#    #+#             */
-/*   Updated: 2026/02/24 13:06:40 by raqroca-         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:31:50 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,15 @@ int	get_position(t_list *stack, int value)
 	return (-1);
 }
 
-void	free_stack(t_stack **stack)
+int	free_stack(t_stack **stack, t_flags **flags)
 {
+	ft_flaclear(flags);
 	if (!stack || !(*stack))
-		return ;
+		return (0);
 	ft_lstclear(&((*stack)->stacka));
 	ft_lstclear(&((*stack)->stackb));
 	free((*stack)->calc);
 	free(*stack);
 	*stack = NULL;
+	return (0);
 }

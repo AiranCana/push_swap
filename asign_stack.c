@@ -6,7 +6,7 @@
 /*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 10:26:44 by acanadil          #+#    #+#             */
-/*   Updated: 2026/03/02 13:39:07 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:41:41 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	foun_number(t_list **stacka, t_list *num, char **s)
 	return (0);
 }
 
-static int	freesear(t_list **stacka, int print, char **num)
+static int	freesear(t_list **stacka, char **num)
 {
 	if (*num)
 	{
@@ -40,8 +40,6 @@ static int	freesear(t_list **stacka, int print, char **num)
 		*num = NULL;
 	}
 	ft_lstclear(stacka);
-	if (print)
-		write(2, "Error\n", 6);
 	return (0);
 }
 
@@ -62,10 +60,10 @@ static int	letercorrect(char **arg, t_list **stacka)
 	num = ft_substr(*arg, 0, aux - *arg);
 	i = ft_atoi_long(num);
 	if (i > 2147483647 || -2147483648 > i)
-		return (freesear(stacka, 1, &num));
+		return (freesear(stacka, &num));
 	number = ft_lstnew((int) i);
 	if (foun_number(stacka, number, &num))
-		return (freesear(stacka, 1, &num));
+		return (freesear(stacka, &num));
 	if (number)
 		ft_lstadd_back(stacka, number);
 	else

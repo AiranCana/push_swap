@@ -47,7 +47,7 @@ all: $(NAME) move
 bonus: $(NAME_BONUS) move
 
 lib:
-	@if [ ! -d "libft.a" ] ; then \
+	@if [ ! -f "libft.a" ] ; then \
 		make -C libft all clean; \
 		mv "libft/libft.a" .; \
 		echo "\033[0;32m ✓ Movida la libft precopilada\n\033[0m"; \
@@ -55,14 +55,18 @@ lib:
 
 $(NAME): $(OBJ) lib
 	@cc $(CFLAGS) $(OBJ) libft.a -g -o $(NAME)
-	@echo "\033[0;32m ✓ Copilado el push_swap\n\033[0m"
+	@echo "\033[0;32m ✓ Copilado el push_swap\n\033[0m" 
 
 $(NAME_BONUS): $(OBJ_BONUS) lib
 	@cc $(CFLAGS) $(OBJ_BONUS) libft.a -o $(NAME_BONUS) -g
 	@echo "\033[0;32m ✓ Copilado el checker\n\033[0m"
 
-%.o: %.c
-	@cc -c $(CFLAGS) $< -o $@
+$(FOLDER)/%.o: %.c | $(FOLDER)
+	cc -c $(CFLAGS) $< -o $@
+
+$(FOLDER):
+	@mkdir $(FOLDER)
+	@echo "\033[0;32m ✓ Carpeta para .o creada\n\033[0m"
 
 clean:
 	@rm -rf $(OBJ) $(OBJ_BONUS)

@@ -6,7 +6,7 @@
 /*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 15:15:22 by acanadil          #+#    #+#             */
-/*   Updated: 2026/03/03 13:41:39 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:42:15 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ static void	print_sol(t_stack *stack, t_flags *flags)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
-	ft_flaclear(&flags);
-	free_stack(&stack);
+	free_stack(&stack, &flags);
 }
 
 int	main(int argv, char **args)
@@ -56,7 +55,7 @@ int	main(int argv, char **args)
 	if (argv < 1)
 		return (0);
 	args++;
-	stacka = parser(args, &flags, 0, 0);
+	stacka = parser(args, &flags, 0);
 	if (!stacka)
 	{
 		write(2, "Error\n", 6);

@@ -6,7 +6,7 @@
 /*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 09:59:52 by acanadil          #+#    #+#             */
-/*   Updated: 2026/03/03 13:23:16 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:36:13 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	verifflag(const t_flags *flag, char **leter)
 	return (0);
 }
 
-static int	letercorrect(char **arg, int w)
+static int	letercorrect(char **arg)
 {
 	char	*aux;
 
@@ -65,14 +65,12 @@ static int	letercorrect(char **arg, int w)
 	*arg = aux;
 	if (*aux != ' ' && *aux != '\0' && !ft_isdigit(*aux))
 	{
-		if (w)
-			write(2, "Error\n", 6);
 		return (0);
 	}
 	return (1);
 }
 
-static size_t	num_number(char **arg, t_flags *flags, int w)
+static size_t	num_number(char **arg, t_flags *flags)
 {
 	size_t	i;
 	int		j;
@@ -91,7 +89,7 @@ static size_t	num_number(char **arg, t_flags *flags, int w)
 				ptr++;
 			if (verifflag(flag, &ptr))
 				continue ;
-			if (!letercorrect(&ptr, w))
+			if (!letercorrect(&ptr))
 				return (0);
 			i++;
 		}
@@ -101,12 +99,12 @@ static size_t	num_number(char **arg, t_flags *flags, int w)
 	return (i);
 }
 
-t_list	*parser_int(char **arg, t_flags *flags, int w)
+t_list	*parser_int(char **arg, t_flags *flags)
 {
 	size_t	size;
 	t_list	*numbers;
 
-	size = num_number(arg, flags, w);
+	size = num_number(arg, flags);
 	if (size == 0)
 	{
 		ft_flaclear(&flags);

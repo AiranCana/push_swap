@@ -6,7 +6,7 @@
 /*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 13:24:08 by acanadil          #+#    #+#             */
-/*   Updated: 2026/03/04 12:34:55 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:42:00 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include "movements.h"
 
 int		strverif(char *str1, char *str2);
-t_list	*parser(char **arg, t_flags **flags, int fla, int w);
-t_list	*parser_int(char **arg, t_flags *flags, int w);
+t_list	*parser(char **arg, t_flags **flags, int fla);
+t_list	*parser_int(char **arg, t_flags *flags);
 t_flags	*asignflag(const t_flags *flags, int j);
 int		verifflag(const t_flags *flag, char **leter);
 long	ft_atoi_long(const char *nptr);
@@ -34,7 +34,7 @@ int		get_min(t_list *stack);
 int		get_max(t_list *stack);
 int		is_sorted(t_list *stack);
 int		get_position(t_list *stack, int value);
-void	free_stack(t_stack **stack);
+int		free_stack(t_stack **stack, t_flags **flags);
 float	disorder(t_list *stack_a);
 void	print_disorder(float d);
 void	tiny_sort(t_stack **stack, int print);

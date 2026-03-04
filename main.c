@@ -6,7 +6,7 @@
 /*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/20 10:36:03 by raqroca-          #+#    #+#             */
-/*   Updated: 2026/03/04 12:29:15 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:42:22 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,17 +82,17 @@ int	main(int argc, char **argv)
 	if (argc <= 1)
 		return (0);
 	argv++;
-	stacka = parser(argv, &flags, 2, 0);
+	stacka = parser(argv, &flags, 2);
 	if (!stacka)
 	{
 		write(2, "Error\n", 6);
 		return (0);
 	}
 	stack = asign(stacka);
+	if (is_sorted(stack ->stacka))
+		return (free_stack(&stack, &flags));
 	execute(stack, flags);
 	if (found_flag(flags, 0))
 		print_bench(stack -> calc);
-	ft_flaclear(&flags);
-	free_stack(&stack);
-	return (0);
+	return (free_stack(&stack, &flags));
 }
