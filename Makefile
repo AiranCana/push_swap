@@ -61,7 +61,7 @@ $(NAME_BONUS): $(OBJ_BONUS) lib
 	@cc $(CFLAGS) $(OBJ_BONUS) libft.a -o $(NAME_BONUS) -g
 	@echo "\033[0;32m ✓ Copilado el checker\n\033[0m"
 
-$(FOLDER)/%.o: %.c
+%.o: %.c
 	@cc -c $(CFLAGS) $< -o $@ 
 
 $(FOLDER):
