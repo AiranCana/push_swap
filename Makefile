@@ -24,6 +24,7 @@ print_set.c \
 utils_sort.c \
 complex.c \
 adaptiv.c \
+utils_sort_complex.c \
 medium.c
 
 BONUS_SOURCE = checker_bonus.c \

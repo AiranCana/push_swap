@@ -6,7 +6,7 @@
 /*   By: raqroca- <raqroca-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/17 13:24:08 by acanadil          #+#    #+#             */
-/*   Updated: 2026/03/03 16:21:03 by raqroca-         ###   ########.fr       */
+/*   Updated: 2026/03/04 11:45:01 by raqroca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,10 @@ void	tiny_sort(t_stack **stack);
 void	assign_pos(t_list *stacka);
 int		get_pos_index(t_list *stack, int pos_look);
 int		get_max_index(t_list *stack);
+/* complex sort */
+void	tiny_sort_by_pos(t_stack **stack, int size);
+void	complex(t_stack **stack);
+void	medium(t_stack **stack);
+void	simple(t_stack **stack);
 
 #endif

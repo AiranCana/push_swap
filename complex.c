@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   complex.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raqroca- <raqroca-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/26 12:26:07 by raqroca-          #+#    #+#             */
-/*   Updated: 2026/03/04 10:21:19 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/04 11:43:29 by raqroca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,20 +73,18 @@ void	complex(t_stack **stack)
 	int	i;
 	int	size;
 	int	max_bits;
-	int	lon;
 
-	lon = ft_lstsize((*stack)-> stacka);
-	if (lon < 7)
-	{
-		simple(stack);
-		return ;
-	}
 	if (!stack || !(*stack) || !(*stack)->stacka)
 		return ;
 	if (is_sorted((*stack)->stacka))
 		return ;
 	assign_pos((*stack)->stacka);
 	size = ft_lstsize((*stack)->stacka);
+	if (size <= 5)
+	{
+		tiny_sort_by_pos(stack, size);
+		return ;
+	}
 	max_bits = count_bits(size - 1);
 	i = 0;
 	while (i < max_bits)
