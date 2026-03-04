@@ -6,7 +6,7 @@
 /*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 11:35:12 by raqroca-          #+#    #+#             */
-/*   Updated: 2026/03/04 12:41:02 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/04 12:41:34 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 ** leaving stack A completely sorted in ascending order.
 */
 
-void	sort_two_by_pos(t_stack **stack)
+void	sort_two_by_pos(t_stack **stack, int print)
 {
 	if ((*stack)->stacka->pos > (*stack)->stacka->next->pos)
 		sa(stack, print);
