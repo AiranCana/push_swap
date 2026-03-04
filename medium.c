@@ -3,15 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   medium.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: raqroca- <raqroca-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/03 10:32:37 by raqroca-          #+#    #+#             */
-/*   Updated: 2026/03/04 12:31:34 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/04 17:27:30 by raqroca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+/*
+** CHUNK SORT ALGORITHM (O(n * sqrt(n))):
+** This algorithm divides the stack into multiple "chunks" based on the
+** relative positions (indices) of the numbers.
+** 1. Pre-sorting phase (A to B): Elements are pushed to Stack B if they fall
+** within the current chunk range. If an element is in the lower half of 
+** the current chunk, it's rotated to the bottom of B (rb) to keep 
+** Stack B semi-sorted, reducing future moves.
+** 2. Final sorting phase (B to A): Once A is empty, the algorithm repeatedly
+** finds the maximum value in B and pushes it back to A using the 
+** shortest rotation path (rb or rrb).
+*/
 static int	ft_sqrt(int n)
 {
 	int	i;
@@ -24,7 +35,7 @@ static int	ft_sqrt(int n)
 	return (i - 1);
 }
 
-static void	push_max_to_a(t_stack **stack, int print)
+static void	return_max_to_a(t_stack **stack, int print)
 {
 	int	size;
 	int	max_pos;
@@ -46,22 +57,49 @@ static void	push_max_to_a(t_stack **stack, int print)
 	pa(stack, print);
 }
 
+static void	chunk_algorit(t_stack **stack, int chunk, int print)
+{
+	int	limit;
+
+	limit = 0;
+	while ((*stack)->stacka)
+	{
+		if ((*stack)->stacka->pos <= limit)
+		{
+			pb(stack, print);
+			limit++;
+		}
+		else if ((*stack)->stacka->pos <= (limit + chunk))
+		{
+			pb(stack, print);
+			rb(stack, print);
+			limit++;
+		}
+		else
+			ra(stack, print);
+	}
+}
+
 void	medium(t_stack **stack, int print)
 {
-	int	i;
 	int	chunk;
 	int	size;
 
-	i = 0;
+	if (!stack || !(*stack) || !(*stack)->stacka)
+		return ;
+	if (is_sorted((*stack)->stacka))
+		return ;
 	assign_pos((*stack)->stacka);
 	size = ft_lstsize((*stack)->stacka);
+	if (size <= 5)
+	{
+		tiny_sort_by_pos(stack, size, print);
+		return ;
+	}
 	chunk = ft_sqrt(size);
 	if (size > 100)
 		chunk = chunk * 1.5;
-	while ((*stack)->stacka)
-	{
-		/////from a to b
-	}
+	chunk_algorit(stack, chunk, print);
 	while ((*stack)->stackb)
-		push_max_to_a(stack, print);
+		return_max_to_a(stack, print);
 }
