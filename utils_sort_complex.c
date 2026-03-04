@@ -6,7 +6,7 @@
 /*   By: raqroca- <raqroca-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 11:35:12 by raqroca-          #+#    #+#             */
-/*   Updated: 2026/03/04 17:12:20 by raqroca-         ###   ########.fr       */
+/*   Updated: 2026/03/04 17:41:39 by raqroca-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,20 +68,16 @@ void	sort_three_by_pos(t_stack **stack, int print)
 
 void	sort_four_by_pos(t_stack **stack, int print)
 {
-	int	size;
-	int	index;
+	int	count;
 
-	size = ft_lstsize((*stack)->stacka);
-	index = get_pos_index((*stack)->stacka, 0);
-	if (index <= size / 2)
+	count = 0;
+	while ((*stack)->stacka->pos != 0 && count < ft_lstsize((*stack)->stacka))
 	{
-		while ((*stack)->stacka->pos != 0)
+		if (count < ft_lstsize((*stack)->stacka) / 2)
 			ra(stack, print);
-	}
-	else
-	{
-		while ((*stack)->stacka->pos != 0)
+		else
 			rra(stack, print);
+		count++;
 	}
 	pb(stack, print);
 	sort_three_by_pos(stack, print);
