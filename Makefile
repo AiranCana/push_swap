@@ -39,12 +39,12 @@ basic_rYrr.c \
 basic_sYp.c \
 utils.c 
 
-OBJ = $(SOURCE:.c=.o)
-OBJ_BONUS = $(BONUS_SOURCE:.c=.o)
+OBJ = $(addprefix $(FOLDER)/, $(SOURCE:.c=.o))
+OBJ_BONUS = $(addprefix $(FOLDER)/, $(BONUS_SOURCE:.c=.o))
 
-all: $(NAME) move
+all: $(NAME)
 
-bonus: $(NAME_BONUS) move
+bonus: $(NAME_BONUS)
 
 lib:
 	@if [ ! -f "libft.a" ] ; then \
@@ -61,12 +61,12 @@ $(NAME_BONUS): $(OBJ_BONUS) lib
 	@cc $(CFLAGS) $(OBJ_BONUS) libft.a -o $(NAME_BONUS) -g
 	@echo "\033[0;32m ✓ Copilado el checker\n\033[0m"
 
-%.o: %.c
+$(FOLDER)/%.o: %.c
+	@if [ ! -d "$(FOLDER)" ]; then \
+		mkdir $(FOLDER); \
+		echo "\033[0;32m ✓ Carpeta para .o creada\n\033[0m"; \
+	fi
 	@cc -c $(CFLAGS) $< -o $@ 
-
-$(FOLDER):
-	@mkdir -p $(FOLDER)
-	@echo "\033[0;32m ✓ Carpeta para .o creada\n\033[0m"
 
 clean:
 	@rm -rf $(FOLDER)
@@ -77,13 +77,5 @@ fclean: clean
 	@echo "\033[0;31m ✗ Eliminar el copilado del push_swap, el checker y la libft.a\n\033[0m"
 
 re: fclean all
-
-move:
-	@if [ ! -d "$(FOLDER)" ]; then \
-		mkdir $(FOLDER); \
-		echo "\033[0;32m ✓ Carpeta para .o creada\n\033[0m"; \
-	fi
-	@mv *.o $(FOLDER)/
-	@echo "\033[0;33m ⚠ objetos .o alojados en la carpeta objects\n\033[0m"
 
 .PHONY: bonus re fclean all clean lib move
