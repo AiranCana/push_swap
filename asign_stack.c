@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asign_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raqroca- <raqroca-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 10:26:44 by acanadil          #+#    #+#             */
-/*   Updated: 2026/03/05 13:19:37 by raqroca-         ###   ########.fr       */
+/*   Updated: 2026/03/06 10:23:43 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	letercorrect(char **arg, t_list **stacka)
 	aux = *arg;
 	if (!*aux)
 		return (1);
-	if (*aux == '-')
+	if (*aux == '-' || *aux == '+')
 		aux++;
 	while (aux && ft_isdigit(*aux))
 		aux++;

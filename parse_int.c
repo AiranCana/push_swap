@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raqroca- <raqroca-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 09:59:52 by acanadil          #+#    #+#             */
-/*   Updated: 2026/03/05 15:52:44 by raqroca-         ###   ########.fr       */
+/*   Updated: 2026/03/06 10:24:43 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static int	letercorrect(char **arg)
 	aux = *arg;
 	if (!aux)
 		return (0);
-	if (*aux == '-')
+	if (*aux == '-' || *aux == '+')
 		aux++;
 	if (!*aux || *aux == ' ')
 		return (0);

@@ -6,7 +6,7 @@
 /*   By: acanadil <acanadil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/27 15:15:22 by acanadil          #+#    #+#             */
-/*   Updated: 2026/03/04 13:42:15 by acanadil         ###   ########.fr       */
+/*   Updated: 2026/03/06 10:23:12 by acanadil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ static t_stack	*asign(t_list *a)
 
 static void	print_sol(t_stack *stack, t_flags *flags)
 {
-	asign(stack -> stacka);
-	if (is_sorted(stack -> stacka))
+	if (stack -> stackb != NULL)
+		write(1, "KO\n", 3);
+	else if (is_sorted(stack -> stacka))
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
@@ -52,7 +53,7 @@ int	main(int argv, char **args)
 	char	*s;
 
 	flags = NULL;
-	if (argv < 1)
+	if (argv <= 1)
 		return (0);
 	args++;
 	stacka = parser(args, &flags, 0);
